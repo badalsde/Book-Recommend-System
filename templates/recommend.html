@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Recommender System</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+<body>
+<div>
+<nav class="navbar navbar-expand-lg bg-body-tertiary navbar bg-dark" data-bs-theme="dark">
+    <div class="container-fluid">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/recommend">Recommend</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Contact</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Recommend Books</h1>
+            <form action="/recommend_books" method="POST">
+                <input name="user_input" type="text" class="form-control"> <br>
+                <input type="submit" class="btn btn-lg btn-outline-warning"> <br>
+            </form>
+        </div>
+        {% if data %}
+            {% for i in data %}
+                <div class="col-md-3">
+                    <div class="card mb-3">
+                        <img src="{{ i[2] }}" class="card-img-top">
+                        <ul>
+                            <li class="list-group-item">{{ i[0] }}</li>
+                            <li class="list-group-item">{{ i[1] }}</li>
+                        </ul>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+</div>
+</body>
+</html>
